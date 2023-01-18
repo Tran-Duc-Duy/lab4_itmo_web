@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <products>
-  <product>
-    <id>1</id>
-    <name>Iphone</name>
-    <price>100000</price>
-    <description>cui thoi</description>
-  </product>
+
+  
+
+  
   <product>
     <id>2</id>
-    <name>Samsung</name>
-    <price>100001</price>
-    <description>tam duoc</description>
+    <name>asus</name>
+    <price>100</price>
+    <description>oke oke </description>
   </product>
-  <product><id>3</id><name>hello</name><price>111</price><description>hiiii</description></product>
-<product><id>4</id><name>haiz</name><price>112</price><description>d</description></product></products>
+  <product>
+    <id>3</id>
+    <name>nokia </name>
+    <price>1</price>
+    <description>okeeee i hate it </description>
+  </product>
+  <product>
+    <id>4</id>
+    <name>32412332</name>
+    <price>546</price>
+    <description>12342</description>
+  </product>
+</products>

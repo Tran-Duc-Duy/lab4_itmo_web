@@ -1,6 +1,7 @@
 <?php
 $dom = new DOMDocument();
 $dom->load('files/data.xml');
+// lấy thẻ products
 $products = $dom->getElementsByTagName('products')->item(0);
 ?>
 
@@ -32,8 +33,18 @@ $products = $dom->getElementsByTagName('products')->item(0);
                     <td><?php echo $product->item($i-1)->getElementsByTagName('name')->item(0)->nodeValue?></td>
                     <td><?php echo $product->item($i-1)->getElementsByTagName('price')->item(0)->nodeValue?></td>
                     <td><?php echo $product->item($i-1)->getElementsByTagName('description')->item(0)->nodeValue?></td>
-                    <td><a href="index.php?page_layout=update&id=<?php echo  $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue; ?>"> Edit <?php echo  $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue; ?></a></td>
-                    <td><a onclick="return Del('<?php echo $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue;?>//')"  href= "index.php?page_layout=delete&id=<?php echo  $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue; ?>" >Delete</a></td>
+                    <td>
+                        <a  
+                            href="index.php?page_layout=update&id=<?php echo  $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue; ?>"> 
+                                Edit 
+                            <!-- <?php echo  $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue; ?> -->
+                        </a>
+                    </td>
+                    <td>
+                        <a 
+                        onclick="return Del('<?php echo $product->item($i-1)->getElementsByTagName('name')->item(0)->nodeValue;?>\\')" 
+                        href= "index.php?page_layout=delete&id=<?php echo  $product->item($i-1)->getElementsByTagName('id')->item(0)->nodeValue; ?>" >Delete</a>
+                    </td>
                 </tr>
                 <?php } ?>
                 </tbody>

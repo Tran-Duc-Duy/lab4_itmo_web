@@ -1,11 +1,20 @@
 <?php
 $id=$_GET['id'];
-echo $id;
+//echo $id;
 $dom = new DOMDocument();
 $dom->load('files/data.xml');
 $products = $dom->getElementsByTagName('products')->item(0);
 $product=$products->getElementsByTagName('product');
-
+$i=0;
+$my_product=$product->item(1);
+while (is_object($product->item($i++))){
+    $prd=$product->item($i-1)->getElementsByTagName('id')->item(0);
+    $prd_id= $prd->nodeValue;
+    if( $prd_id== $id){
+        $my_product = $product->item($i-1);
+        break;
+    }
+}
 if(isset($_POST['sbm'])){
     $prd_name = $_POST['prd_name'];
     $price = $_POST['price'];
@@ -48,15 +57,15 @@ if(isset($_POST['sbm'])){
             <form method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="">Product's Name</label>
-                    <input type="text" name="prd_name" class="form-control" required  ">
+                    <input type="text" name="prd_name" class="form-control" required value = "<?php echo $my_product->getElementsByTagName('name')->item(0)->nodeValue ?>"/>
                 </div>
                 <div class="form-group">
                     <label for="">Product's Price</label>
-                    <input type="number" name="price" class="form-control" required  ">
+                    <input type="number" name="price" class="form-control" required  value = "<?php echo $my_product->getElementsByTagName('price')->item(0)->nodeValue ?>">
                 </div>
                 <div class="form-group">
                     <label for="">Product's description</label>
-                    <input type="text" name="description" class="form-control" required  ">
+                    <input type="text" name="description" class="form-control" required  value = "<?php echo $my_product->getElementsByTagName('description')->item(0)->nodeValue ?>">
                 </div>
                 <button name="sbm" class="btn btn-success" type="submit">Update</button>
             </form>
